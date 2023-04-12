@@ -16,7 +16,7 @@ class Animal
 
     private ?string $nom;
 
-    private ?string $regimeAlim;
+    private ?Aliment $regimeAlim;
 
 
     public function __construct($espace,$nom,$sexe,$regimeAlim){
@@ -60,20 +60,37 @@ class Animal
 
     }
 
-    public function getRegimeAlim()
+    public function getRegimeAlim() :Aliment
     {
         return $this->regimeAlim;
     }
 
-    public function setRegimeAlim(string $regimeAlim)
+    public function setRegimeAlim(Aliment $regimeAlim)
     {
         $this->regimeAlim = $regimeAlim;
 
     }
+    
+    private function DefinirSexe(){
+        $result = "";
+        switch($this->getSexe())
+        {
+            case "M":
+                $result = "Male";
+                break;
+            case "F":
+                $result = "Femelle";
+                break; 
+            default:
+                $result = "";
+                break;   
+        }
+        return $result;
+    }
 
     public function __toString()
     {
-        return "Le ". $this->getEspace()->getlibelle()." de nom ".$this->getNom()." de sexe ".$this->getSexe()." mange de l'/du " .$this->getRegimeAlim();
+        return "Le ". $this->getEspace()->getlibelle()." de nom ".$this->getNom()." de sexe ".$this->DefinirSexe()." mange de l'/du " .$this->getRegimeAlim()->getAlimentaire();
     }
 
 }
