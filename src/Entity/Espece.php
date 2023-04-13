@@ -2,11 +2,11 @@
 
 namespace App\Entity;
 
-use App\Repository\EspaceRepository;
+use App\Repository\EspeceRepository;
 use Doctrine\ORM\Mapping as ORM;
 
-#[ORM\Entity(repositoryClass: EspaceRepository::class)]
-class Espace
+#[ORM\Entity(repositoryClass: EspeceRepository::class)]
+class Espece
 {
     private ?string $libelle;
 

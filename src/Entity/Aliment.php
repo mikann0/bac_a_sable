@@ -15,7 +15,7 @@ class Aliment
         
    }
 
-    public function getAlimentaire()
+    public function getAlimentaire() 
     {
         return $this->alimentaire;
     }
@@ -25,4 +25,10 @@ class Aliment
         $this->alimentaire = $alimentaire;
 
     }
+
+    public function __toString()
+    {
+        return $this->getAlimentaire();
+    }
+
 }

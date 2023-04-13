@@ -2,7 +2,7 @@
 
 namespace App\Entity;
 
-// use App\Entity\Espace;
+// use App\Entity\Espece;
 use App\Repository\AnimalRepository;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -10,29 +10,29 @@ use Doctrine\ORM\Mapping as ORM;
 class Animal
 {
    
-    private ?Espace $espace;
+    private ?Espece $espace;
 
     private ?string $sexe;
 
     private ?string $nom;
 
-    private ?Aliment $regimeAlim;
+    private ?array $regimeAlim;
 
 
     public function __construct($espace,$nom,$sexe,$regimeAlim){
-         $this->setEspace($espace);
+         $this->setEspece($espace);
          $this->setNom($nom);
          $this->setSexe($sexe);
          $this->setRegimeAlim($regimeAlim);
     }
 
 
-    public function getEspace(): ?Espace
+    public function getEspece(): ?Espece
     {
         return $this->espace;
     }
 
-    public function setEspace(Espace $espace)
+    public function setEspece(Espece $espace)
     {
         $this->espace = $espace;
 
@@ -60,12 +60,12 @@ class Animal
 
     }
 
-    public function getRegimeAlim() :Aliment
+    public function getRegimeAlim() : ?array
     {
         return $this->regimeAlim;
     }
 
-    public function setRegimeAlim(Aliment $regimeAlim)
+    public function setRegimeAlim(array $regimeAlim)
     {
         $this->regimeAlim = $regimeAlim;
 
@@ -88,9 +88,21 @@ class Animal
         return $result;
     }
 
+    public function cri()
+    {
+    return "?";
+    }
+
     public function __toString()
     {
-        return "Le ". $this->getEspace()->getlibelle()." de nom ".$this->getNom()." de sexe ".$this->DefinirSexe()." mange de l'/du " .$this->getRegimeAlim()->getAlimentaire();
+        $result =  "Le ". $this->getEspece()->getlibelle()." de nom ".$this->getNom()." de sexe ".$this->DefinirSexe().". Il a pour cri ".$this->cri()." Il mange ";
+     
+        if($this->getRegimeAlim() != null){
+        foreach($this->getRegimeAlim() as $regimeAlim){
+            $result = $result. " ".$regimeAlim->getAlimentaire();
+        }
+    }
+        return $result;
     }
 
 }

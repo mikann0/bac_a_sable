@@ -2,26 +2,26 @@
 
 namespace App\Repository;
 
-use App\Entity\Espace;
+use App\Entity\Espece;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @extends ServiceEntityRepository<Espace>
+ * @extends ServiceEntityRepository<Espece>
  *
- * @method Espace|null find($id, $lockMode = null, $lockVersion = null)
- * @method Espace|null findOneBy(array $criteria, array $orderBy = null)
- * @method Espace[]    findAll()
- * @method Espace[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method Espece|null find($id, $lockMode = null, $lockVersion = null)
+ * @method Espece|null findOneBy(array $criteria, array $orderBy = null)
+ * @method Espece[]    findAll()
+ * @method Espece[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class EspaceRepository extends ServiceEntityRepository
+class EspeceRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, Espace::class);
+        parent::__construct($registry, Espece::class);
     }
 
-    public function save(Espace $entity, bool $flush = false): void
+    public function save(Espece $entity, bool $flush = false): void
     {
         $this->getEntityManager()->persist($entity);
 
@@ -30,7 +30,7 @@ class EspaceRepository extends ServiceEntityRepository
         }
     }
 
-    public function remove(Espace $entity, bool $flush = false): void
+    public function remove(Espece $entity, bool $flush = false): void
     {
         $this->getEntityManager()->remove($entity);
 
@@ -40,7 +40,7 @@ class EspaceRepository extends ServiceEntityRepository
     }
 
 //    /**
-//     * @return Espace[] Returns an array of Espace objects
+//     * @return Espece[] Returns an array of Espece objects
 //     */
 //    public function findByExampleField($value): array
 //    {
@@ -54,7 +54,7 @@ class EspaceRepository extends ServiceEntityRepository
 //        ;
 //    }
 
-//    public function findOneBySomeField($value): ?Espace
+//    public function findOneBySomeField($value): ?Espece
 //    {
 //        return $this->createQueryBuilder('e')
 //            ->andWhere('e.exampleField = :val')
